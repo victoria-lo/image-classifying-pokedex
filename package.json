@@ -1,0 +1,16 @@
+{
+  "name": "image-classifying-pokedex",
+  "version": "1.0.0",
+  "description": "",
+  "main": "tensorflow.js",
+  "dependencies": {
+    "@google-cloud/text-to-speech": "^3.1.3",
+    "axios": "^0.21.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}

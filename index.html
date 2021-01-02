@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
+  <title>Pokedex</title>
+  <link rel="shortcut icon" type="image/png" href="./icon.png"/>
+</head>
+
+<body>
+  <nav class="p-3 mt-0 z-10 top-0" style="border-bottom: 0.1rem solid lightgray;">
+    <div class="container mx-auto flex flex-wrap items-center">
+    <div class="flex w-full justify-center md:justify-center font-bold">
+      <a class="no-underline hover:no-underline" href="/">
+        <span class="text-2xl pl-2 inline-flex"><img style= "width:2rem; margin-right:1rem" src="./icon.png"/>Image Classification Pokedex</span>
+      </a>
+    </div>
+  </div>
+  </nav>
+  <main class="max-w-4xl mx-auto">
+    <div class="flex flex-col items-center justify-center bg-grey-lighter mt-8 text-center" id= "upload">
+      <h2 class="mb-8">Welcome to the Image Classifying Pokedex. <br/>Note that this Pokedex currently only detects the original 151 Pokemon from the Kanto region. <br/>Please upload a Pokemon image and the Pokedex will return its best guess.</h2>
+      <label class="w-64 flex flex-col items-center px-4 py-6 bg-white text-red-700 rounded-lg shadow-lg tracking-wide uppercase border border-red cursor-pointer hover:bg-red-600 hover:text-white">
+          <svg class="w-8 h-8" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+              <path d="M16.88 9.1A4 4 0 0 1 16 17H5a5 5 0 0 1-1-9.9V7a3 3 0 0 1 4.52-2.59A4.98 4.98 0 0 1 17 8c0 .38-.04.74-.12 1.1zM11 11h3l-4-4-4 4h3v3h2v-3z" />
+          </svg>
+          <span class="mt-2 text-base leading-normal">Upload an image</span>
+          <input type='file' id="img" name="img" accept="image/jpeg image/png" class="hidden" />
+      </label>
+
+      <div hidden id = "progress-div" class="mt-10 px-5" style="width:100%">
+        <div class="flex mb-2 items-center justify-between">
+          <div>
+            <span id="upload-text"class="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-red-700">
+              Uploading Image...
+            </span>
+          </div>
+          <div class="ml-5 text-right">
+            <span id="progress-value" class="text-sm font-semibold inline-block text-red-700">
+              0%
+            </span>
+          </div>
+        </div>
+        <div class="overflow-hidden h-2 mb-4 text-xs flex rounded bg-gray-400">
+          <div id="progress-bar" class="transition-all duration-250 ease-in-out shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-red-700"></div>
+        </div>
+      </div>
+
+      <img class="max-w-2xl mx-auto" id="result" crossorigin='anonymous' src="#" alt="" />
+      <button id="what-poke" hidden class="mt-8 mb-10 px-6 py-2 text-xs font-medium leading-6 text-center text-white uppercase transition bg-red-700 rounded shadow ripple hover:shadow-lg hover:bg-red-600 focus:outline-none">Run Pokedex Analysis</button>
+  </div>
+  </main>
+</body>
+
+<script src="./tensorflow.js"></script>
+<script src="https://unpkg.com/@tensorflow/tfjs"></script>
+<script src="https://unpkg.com/@tensorflow/tfjs-automl"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</html>
