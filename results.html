@@ -36,16 +36,20 @@
             <img id="pokemon-img" alt="" style="height:100%; width:450px; margin-right:15px"/>
             <div class="mt-8 lg:mt-0 px-5">
                 <span class="text-xl font-medium">Type</span>
-                <!-- <div class="ml-3 inline-flex rounded-md shadow">
+                <div class="ml-3 inline-flex rounded-md shadow">
                   <span id="type1" class="inline-flex items-center justify-center px-5 py-1 border border-transparent bg-red-700 text-white text-base font-medium rounded-md" style="cursor: default"></span>
                 </div>
                 <div class="ml-3 inline-flex rounded-md shadow">
                   <span id="type2" class="inline-flex items-center justify-center px-5 py-1 border border-transparent bg-red-700 text-white text-base font-medium rounded-md" style="cursor: default"></span>
-                </div> -->
+                </div>
                 <span class="block text-xl font-medium" style="margin-top: 15px; word-wrap: break-word;">Description</span>
                 <p id="description" class="block" style="margin-bottom: 10px; overflow-wrap: break-word;"></p>
 
                 <div class="flex justify-between" style="margin-top:15px; margin-bottom:10px">
+                  <div class="flex-col">
+                    <span class="flex text-xl font-medium">Abilities</span>
+                    <p id="abilities" class="block" style="margin-bottom: 10px; overflow-wrap: break-word; white-space: pre-line;"></p>
+                  </div>
                   <div class="flex-col">
                     <span class="flex text-xl font-medium">Height</span>
                     <p id="height" style="padding: 7px"></p>
@@ -55,10 +59,37 @@
                     <p id="weight" style="padding: 7px"></p>
                   </div>
                 </div>
+                <div class="flex-col">
+                  <h2 class="text-xl font-medium mb-2">Strengths</h2>   
+                  <span id="strengths" class="flex flex-wrap text-xl font-medium">
+                     
+                  </span>
+                  <h2 class="text-xl font-medium mt-5 mb-2">Weaknesses</h2>   
+                  <span id="weaknesses" class="flex flex-wrap text-xl font-medium">
+                  </span>
+                </div>
                    
             </div>
         </div>
         <div class="lg:flex px-5 justify-center">
+          <div class="mt-5 lg:flex-col sm:flex flex-shrink lg:flex-3">
+            <div class="flex-col sm:mr-5 sm:flex-1">
+              <span class="text-xl font-medium">Habitat</span>
+              <p id="habitat" class="block" style="margin-bottom: 10px; overflow-wrap: break-word;"></p>
+            </div>
+            <div class="flex-col sm:mr-5 sm:flex-1">
+              <span class="text-xl font-medium">Held Items</span>
+              <p id="items" class="block" style="margin-bottom: 10px; overflow-wrap: break-word; white-space: pre-line;"></p>
+            </div>
+            <div class="sm:flex-col sm:mr-5 sm:flex-1">
+              <span class="text-xl font-medium">Egg Groups</span>
+              <p id="egg" class="block" style="margin-bottom: 10px; overflow-wrap: break-word; white-space: pre-line;"></p>
+            </div>
+          </div>
+          <div class="mt-5 flex-col flex-shrink flex-1 text-center">
+            <span class="text-xl font-medium">Base Stats</span>
+            <canvas id="stats"></canvas>
+          </div>
           <div class="mt-5 flex-col flex-shrink flex-1 text-center">
             <span id="growth-title" class="text-xl font-medium">Leveling Rate</span>
               <canvas id="growth-chart"></canvas>
@@ -69,6 +100,10 @@
           <div class="mt-5 flex-col flex-1 flex-shrink text-center">
             <span class="text-xl font-medium">Miscellaneous Stats</span>
             <canvas id="bar-chart"></canvas>
+          </div>
+          <div class="mt-5 flex-col flex-shrink flex-1 text-center">
+            <span id="gender-span" class="text-xl font-medium">Gender Ratio</span>
+            <canvas id="pie-chart"></canvas>
           </div>
         </div>
  
