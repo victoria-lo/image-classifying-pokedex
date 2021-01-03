@@ -69,6 +69,23 @@ document.addEventListener("DOMContentLoaded", function () {
           const decription =
             en_descriptions[en_descriptions.length - 1].flavor_text;
           document.getElementById("description").textContent = decription;
+
+          // Text-to-Speech
+          if (data.types.length > 1) {
+            textToSpeech(
+              pokemonName +
+                ", the " +
+                type1 +
+                " and " +
+                type2 +
+                " type pokemon. " +
+                decription
+            );
+          } else {
+            textToSpeech(
+              pokemonName + ", the " + type1 + "type pokemon. " + decription
+            );
+          }
         });
 
       //Height & Weight
@@ -127,6 +144,71 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 });
+
+function _base64ToArrayBuffer(base64) {
+  var binary_string = window.atob(base64);
+  var len = binary_string.length;
+  var bytes = new Uint8Array(len);
+  for (var i = 0; i < len; i++) {
+    bytes[i] = binary_string.charCodeAt(i);
+  }
+  return bytes.buffer;
+}
+
+function playOutput(base64Audio) {
+  let arrayBuffer = _base64ToArrayBuffer(base64Audio);
+  let audioContext = new AudioContext();
+  let outputSource;
+  try {
+    if (arrayBuffer.byteLength > 0) {
+      // 2)
+      audioContext.decodeAudioData(
+        arrayBuffer,
+        function (buffer) {
+          // 3)
+          audioContext.resume();
+          outputSource = audioContext.createBufferSource();
+          outputSource.connect(audioContext.destination);
+          outputSource.buffer = buffer;
+          outputSource.start(0);
+        },
+        function () {
+          console.log(arguments);
+        }
+      );
+    }
+  } catch (e) {
+    console.log(e);
+  }
+}
+
+function textToSpeech(string) {
+  axios({
+    method: "post",
+    url: "https://texttospeech.googleapis.com/v1/text:synthesize",
+    headers: {
+      Authorization: `Bearer ${localStorage.getItem("access_token")}`,
+      "Content-Type": "application/json; charset=utf-8",
+    },
+    data: {
+      input: {
+        text: string,
+      },
+      voice: {
+        languageCode: "en-gb",
+        name: "en-US-Wavenet-F",
+        ssmlGender: "FEMALE",
+      },
+      audioConfig: {
+        audioEncoding: "OGG_OPUS",
+      },
+    },
+  }).then((result) => {
+    if (result.status === 200) {
+      playOutput(result.data.audioContent);
+    }
+  });
+}
 
 function searchPokemon(name) {
   return new Promise((resolve, reject) => {
