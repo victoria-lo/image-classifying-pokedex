@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
+  <title>Pokedex</title>
+  <link rel="shortcut icon" type="image/png" href="./icon.png"/>
+</head>
+
+<body>
+  <nav class="p-3 mt-0 z-10 top-0" style="border-bottom: 0.1rem solid lightgray;">
+    <div class="container mx-auto flex flex-wrap items-center">
+    <div class="flex w-full justify-center md:justify-center font-bold">
+      <a class="no-underline hover:no-underline" href="/">
+        <span class="text-2xl inline-flex"><img style= "width:2rem; margin-right:1rem" src="./icon.png"/>Pokedex Analysis Report</span>
+      </a>
+    </div>
+  </div>
+  </nav>
+  <main class="max-w-full px-5 md:flex justify-center">
+    <div class="bg-gray-50 mt-5">
+        <div class="lg:py-8 px-5 lg:flex lg:items-center lg:justify-between">
+          <h2 class="text-3xl font-bold sm:text-4xl">
+            <span id="pokemon-name" class="block"></span>
+          </h2>
+          <div class="lg:mt-8 lg:flex sm:mt-0 sm:flex-shrink-0">
+            <h2 class="text-3xl font-bold sm:text-4xl">
+                <span id="pokemon-id"></span>
+            </h2>
+          </div>
+        </div>
+        <div class="lg:flex">
+            <img id="pokemon-img" alt="" style="height:100%; width:450px; margin-right:15px"/>
+            <div class="mt-8 lg:mt-0 px-5">
+                <span class="text-xl font-medium">Type</span>
+                <!-- <div class="ml-3 inline-flex rounded-md shadow">
+                  <span id="type1" class="inline-flex items-center justify-center px-5 py-1 border border-transparent bg-red-700 text-white text-base font-medium rounded-md" style="cursor: default"></span>
+                </div>
+                <div class="ml-3 inline-flex rounded-md shadow">
+                  <span id="type2" class="inline-flex items-center justify-center px-5 py-1 border border-transparent bg-red-700 text-white text-base font-medium rounded-md" style="cursor: default"></span>
+                </div> -->
+                <span class="block text-xl font-medium" style="margin-top: 15px; word-wrap: break-word;">Description</span>
+                <p id="description" class="block" style="margin-bottom: 10px; overflow-wrap: break-word;"></p>
+
+                <div class="flex justify-between" style="margin-top:15px; margin-bottom:10px">
+                  <div class="flex-col">
+                    <span class="flex text-xl font-medium">Height</span>
+                    <p id="height" style="padding: 7px"></p>
+                  </div>
+                  <div class="flex-col">
+                    <span class="text-xl font-medium">Weight</span>
+                    <p id="weight" style="padding: 7px"></p>
+                  </div>
+                </div>
+                   
+            </div>
+        </div>
+        <div class="lg:flex px-5 justify-center">
+          <div class="mt-5 flex-col flex-shrink flex-1 text-center">
+            <span id="growth-title" class="text-xl font-medium">Leveling Rate</span>
+              <canvas id="growth-chart"></canvas>
+          </div>
+        </div>
+       
+        <div class="lg:flex mt-8 px-5 justify-around">
+          <div class="mt-5 flex-col flex-1 flex-shrink text-center">
+            <span class="text-xl font-medium">Miscellaneous Stats</span>
+            <canvas id="bar-chart"></canvas>
+          </div>
+        </div>
+ 
+        <div class="my-10 bg-gray-50 text-center">
+          <button id="back" class="mt-8 px-6 py-2 text-xs font-medium leading-6 text-center text-white uppercase transition bg-red-700 rounded shadow ripple hover:shadow-lg hover:bg-red-600 focus:outline-none">Upload Another Image</button>
+        </div>
+      </div>
+        
+  </main>
+</body>
+
+<script src="./pokeapi.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</html>
