@@ -40,17 +40,20 @@ function uploadImage(file) {
       );
       const fakeLoading = setInterval(() => {
         if (percentCompleted < 100) {
-          progressBar.style.width = (fakeProgress + 10).toString() + "%";
-          progressValue.textContent = (fakeProgress + 10).toString() + "%";
+          if(fakeProgress<99){
+            fakeProgress+=1;
+            progressBar.style.width = (fakeProgress).toString() + "%";
+            progressValue.textContent = (fakeProgress).toString() + "%";
+          }
         } else {
           clearInterval(fakeLoading);
           fakeProgress = 100;
-          progressBar.style.width = percentCompleted + "%";
-          progressValue.textContent = percentCompleted + "%";
+          progressBar.style.width = fakeProgress + "%";
+          progressValue.textContent = fakeProgress + "%";
           document.getElementById("upload-text").textContent =
             "Upload complete!";
         }
-      }, 100);
+      }, 200);
     },
   };
   let formData = new FormData();
