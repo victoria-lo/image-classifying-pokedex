@@ -8,13 +8,13 @@ Our Pokédex is an image classifying app that returns the Pokémon data that it 
 
 ## How it works
 ### Home Page: Upload an Image
-<img src= "https://challengepost-s3-challengepost.netdna-ssl.com/photos/production/software_photos/001/323/386/datas/gallery.jpg" />
+<img src= "https://challengepost-s3-challengepost.netdna-ssl.com/photos/production/software_photos/001/323/386/datas/original.PNG" />
 
 ### Click Run Pokedex Analysis
-<img src="https://challengepost-s3-challengepost.netdna-ssl.com/photos/production/software_photos/001/323/388/datas/gallery.jpg" />
+<img src="https://challengepost-s3-challengepost.netdna-ssl.com/photos/production/software_photos/001/323/388/datas/original.PNG" />
 
 ### Pokedex will output 
-<img src="https://challengepost-s3-challengepost.netdna-ssl.com/photos/production/software_photos/001/323/387/datas/gallery.jpg" />
+<img src="https://challengepost-s3-challengepost.netdna-ssl.com/photos/production/software_photos/001/323/387/datas/original.PNG" />
 
 ## How we built it
 Our Pokédex app uses a custom image classification model trained using Google Cloud AutoML Vision API. We collected over 10000 images for all original 151 species of Pokémon. We stored them all in Google Cloud Storage. Then we trained it on the Google Cloud AutoML Vision Dashboard. After a few hours of training, our model is ready to be exported for use.
